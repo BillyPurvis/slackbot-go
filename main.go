@@ -18,11 +18,24 @@ func main() {
 	fmt.Println("Waking up Isobel")
 
 	// Create Message In App
-	message := fmt.Sprintf(
-		"My message with a new line %v break",
-		builder.AddLineBreak())
+	message := builder.CreateMessage("Hello World")
 
-	// Send Message
+	
+	builder.AddButton(message, "Would you like to play a game?", builder.Action{
+		"Game",
+		"Test",
+		"button",
+		"test",
+	},
+	)
+	builder.AddButton(message, "Would you like to play a game?", builder.Action{
+		"Game",
+		"Test",
+		"button",
+		"test",
+	},
+
+	// Send the message
 	builder.SendMessage(message)
 
 }
