@@ -20,20 +20,39 @@ func main() {
 	// Create Message In App
 	message := builder.CreateMessage("Hello World")
 
-	
-	builder.AddButton(message, "Would you like to play a game?", builder.Action{
-		"Game",
-		"Test",
-		"button",
-		"test",
-	},
+	builder.AddButtons(
+		message,
+		"Would you like to play a game, Sir?",
+		builder.Actions{
+			builder.Action{
+				"Game",
+				"Test",
+				"button",
+				"test",
+			},
+			builder.Action{
+				"Game",
+				"Test",
+				"button",
+				"test",
+			},
+		},
 	)
-	builder.AddButton(message, "Would you like to play a game?", builder.Action{
-		"Game",
-		"Test",
-		"button",
-		"test",
-	},
+
+	// //TODO Add the buttons to a slice [] using append
+	// builder.AddButton(message, "Would you like to play a game?", builder.Action{
+	// 	"Game",
+	// 	"Test",
+	// 	"button",
+	// 	"test",
+	// },
+	// )
+	// builder.AddButton(message, "Would you like to play a game?", builder.Action{
+	// 	"Game",
+	// 	"Test",
+	// 	"button",
+	// 	"test",
+	// },
 
 	// Send the message
 	builder.SendMessage(message)

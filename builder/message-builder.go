@@ -48,18 +48,12 @@ func CreateMessage(message string) *MessageStruct {
 	return messageStruct
 }
 
-// AddButton Adds Button to slack message
-func AddButton(message *MessageStruct, attachmentMessage string, actionStruct Action) {
-
-	//FIXME Change method to append to a slice rather than a single action being attached
-	myActions := Actions{
-		actionStruct,
-	}
-
+// AddButtons Adds Button to slack message
+func AddButtons(message *MessageStruct, attachmentMessage string, actions Actions) {
 	message.Attachments = Attachments{
 		Attachment{
 			Text:    attachmentMessage,
-			Actions: myActions,
+			Actions: actions,
 		},
 	}
 
@@ -79,29 +73,6 @@ func CreateButton(name, buttonText, buttonType, buttonValue string) *Action {
 
 // SendMessage Sends POST request to Slack
 func SendMessage(message *MessageStruct) {
-
-	// // Build Slice of actions
-	// myActions := Actions{
-	// 	Action{
-	// 		Name:  "Game",
-	// 		Text:  "Chess",
-	// 		Type:  "button",
-	// 		Value: "Button Value",
-	// 	},
-	// }
-
-	// // Build slice of attachments
-	// attachments := Attachments{
-	// 	Attachment{
-	// 		Text:    "Choose a game to play",
-	// 		Actions: myActions,
-	// 	},
-	// }
-
-	// // Build up message
-	// messageBody := new(MessageStruct)
-	// messageBody.Text = "Would you like to play a game?"
-	// messageBody.Attachments = attachments
 
 	// Create JSON payload
 	payload, err := json.Marshal(message)
